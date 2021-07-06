@@ -1,0 +1,49 @@
+{
+  "description": "Yii2 microservice",
+  "type": "project",
+
+  "require": {
+    "yiisoft/yii2": "2.0.42.1",
+    "vlucas/phpdotenv": "^5.3",
+    "zircote/swagger-php": "^3.2",
+    "yiisoft/yii2-queue": "^2.3",
+    "simple-bus/message-bus": "^6.1",
+    "ramsey/uuid": "^4.1",
+    "la-haute-societe/yii2-save-relations-behavior": "^1.7",
+    "league/flysystem": "^2.1",
+    "yiisoft/yii2-faker": "^2.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "yii\\composer\\Installer::postInstall",
+      "./scripts/symlink.sh"
+    ],
+    "post-create-project-cmd": [
+      "yii\\composer\\Installer::postCreateProject",
+      "yii\\composer\\Installer::postInstall"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "yiisoft/yii2-debug": "^2.1",
+    "yiisoft/yii2-gii": "^2.2",
+    "phpunit/phpunit": "^9.5"
+
+  }
+}
